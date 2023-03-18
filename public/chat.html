@@ -10,30 +10,14 @@
     <script defer type="module" src="/js/client.js"></script>
   </head>
   <body>
-    <div class="chat-container mt-24 m-auto min-h-full">
-      <div class="chat-container mt-24 m-auto min-h-full">
+    <div class="chat-container mt-20 m-auto">
+      <div class="chat-container mt-20 m-auto">
         <div class="chat-header">
           <h2 class="text-center">Foodiest Restaurant Chat App</h2>
         </div>
         <div class="chat-history chat-window px-8">
-          <ul class="message-list flex flex-col" id="chat-history">
-            <li class="flex flex-col border-black message-bot">
-              <div class="message-sender text-right">Bottomless bot</div>
-              <div class="flex justify-end">
-                <div class="flex flex-col message-text w-2/3">
-                  <p> Welcome to Foodiest! </p>
-  
-                  <ul class="my-6 ml-8 list-disc">
-                    
-                  </ul>
-                </div>
-              </div>
-            </li>
-  
-            <li class="message w-2/3">
-              <div class="message-sender">User</div>
-              <div class="message-text">Hello!</div>
-            </li>
+          <ul class="message-list flex flex-col h-96 overflow-y-scroll overscroll-none" id="chat-history">
+        
           </ul>
         </div>
         <form id="input-container" class="input-container chat-input">

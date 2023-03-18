@@ -8,7 +8,6 @@ const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongodb-session")(session);
 const { v4: uuidv4 } = require("uuid");
 const config = require('./config/config')
-const {sessionMW} = require('./db')
 
 const { Server } = require("socket.io");
 
@@ -44,8 +43,25 @@ const io = new Server(httpServer, {
   cors: { origin: "*" },
 });
 
+const store = new MongoStore({
+  uri: config.mongoUrl,
+  collection: "sessions",
+});
+
+store.on("error", (error) => {
+  console.log(error);
+});
+
+const sessionMW = session({
+  secret: config.session_secret,
+  resave: true,
+  saveUninitialized: true,
+  store: store,
+  cookie: { secure: false, maxAge: +config.session_expiration_time },
+});
+
 app.use(sessionMW);
-// app.use(cookieParser());
+app.use(cookieParser());
 
 io.use((socket, next) => {
   sessionMW(socket.request, {}, next);

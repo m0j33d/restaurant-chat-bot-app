@@ -67,9 +67,8 @@ function displayMessage(message, isBotMsg) {
   const chatMessage = document.createElement("div");
   chatMessage.className = `chat-text ${isBotMsg ? "bot" : "chat"}-message`;
   chatMessage.innerHTML = message;
-  console.log(chatMessage)
   chatHistory.insertAdjacentElement("beforeend", chatMessage);
-  handlingScroll();
+  // handlingScroll();
 }
 
 function displayChatHistory(userChatHistory) {
@@ -87,25 +86,25 @@ function displayOptions(optsArray) {
 }
 
 function displayMenu(menu) {
-  const htmlFormattedOpts = `<p><ol start=3 style="list-style-type:decimal; list-style-position:inside;">${menu
+  const htmlFormattedOpts = `<p><ol start=100 style="list-style-type:decimal; list-style-position:inside;">${menu
     .map(
-      (item) => `<li>${item.mealType} => ${item.name} => $${item.price}</li>`
+      (item) => `<li>${item.name} -- #${item.price}</li>`
     )
     .join("")}</ol></p>`;
   displayMessage(htmlFormattedOpts, true);
 }
 
 function displayGreetings() {
-  const greeting = `<p>Welcome to <span id="food">Food</span><span id="planet">Planet!</span> How can I assist you?</p>`;
+  const greeting = `<p>Welcome to Foodiest!</span> How can I assist you?</p>`;
   displayMessage(greeting, true);
 }
 function displayCurrOrder(orders) {
   const total = orders.reduce((prev, item) => prev + item.price, 0);
   const htmlFormattedOpts = `<p><ul>${orders
     .map(
-      (item) => `<li>${item.mealType} => ${item.name} => $${item.price}</li>`
+      (item) => `<li>${item.name} -- $${item.price}</li>`
     )
-    .join("")} Total => ${total}</ul></p>`;
+    .join("")} Total is ${total}</ul></p>`;
   displayMessage(htmlFormattedOpts, true);
 }
 
