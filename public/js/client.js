@@ -1,6 +1,7 @@
 import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
 
-const socket = io("https://cassava-garri-chatbot.onrender.com/");
+
+const socket = io("https://cassava-garri-restaurant-chatbot.onrender.com");
 const chatHistory = document.getElementById("chat-history");
 const inputCon = document.getElementById("input-container");
 const msgInput = document.getElementById("msg-input");
@@ -98,7 +99,7 @@ function displayMenu(menu) {
 }
 
 function displayGreetings() {
-  const greeting = `<p>Welcome to Foodiest!</span> How can I assist you?</p>`;
+  const greeting = `<p>Welcome to <span class="font-bold"> Cassava & Garri restaurant! </span> How can I assist you?</p>`;
   displayMessage(greeting, true);
 }
 function displayCurrOrder(orders) {

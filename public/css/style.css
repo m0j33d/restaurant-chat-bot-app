@@ -1,18 +1,21 @@
 body {
-  background-color: #f2f2f2;
+  background-image: url('../wallpaper.jpg');
+  background-position: center;
+  background-size: cover;
   font-family: Arial, sans-serif;
 }
 
 .chat-container {
   max-width: 900px;
-  background-color: #fff;
+  background-color: #555252;
+  opacity: 90%;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .chat-header {
   padding: 10px;
-  background-color: #0057b3;
+  background-color: #066636;
   color: #fff;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -57,7 +60,7 @@ body {
 }
 
 .chat-input button {
-  background-color: #0057b3;
+  background-color: #068a5e;
   color: #fff;
   padding: 5px 10px;
   border-radius: 5px;
