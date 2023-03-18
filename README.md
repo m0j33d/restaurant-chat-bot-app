@@ -57,7 +57,8 @@ This is chabot app that takes customer orders
 
 <br>
 
-### Installation
+## Installation
+
 - Install NodeJS, mongodb
 - pull this repo
 - update env with .env.example
