@@ -29,7 +29,7 @@ mongoose
   .connect(config.mongoUrl)
   .then(() => {
     console.log("Connection to MongoDB Successfully!");
-    httpServer.listen(config.port, config.host, () => {
+    httpServer.listen(config.port, () => {
       console.log("Server running on port", config.port);
     });
   })
