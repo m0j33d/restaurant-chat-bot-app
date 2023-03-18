@@ -50,7 +50,6 @@ This is chabot app that takes customer orders
 - 
 - [x] Validate user inputs
 
-<p align="right"><a href="#readme-top">back to top</a></p>
 
 ---
 
@@ -58,7 +57,6 @@ This is chabot app that takes customer orders
 
 <br>
 
----
 ### Installation
 - Install NodeJS, mongodb
 - pull this repo
