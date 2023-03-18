@@ -21,6 +21,43 @@ This is chabot app that takes customer orders
   
 </div>
 
+<!-- AltSchool Requirements -->
+
+## Requirements
+
+<details>
+
+<summary> <strong>Requirements for the examination project</strong> </summary>
+
+- [x] ChatBot interface would be like a chat interface
+
+- [x] No need for authentication but we should be able to store user session based on devices
+
+- [x] When a customer lands on the chatbot page, the bot should send these options to the customer
+    - [x] Select 1 to Place an order
+    - [x] Select 99 to checkout order
+    - [x] Select 98 to see order history
+    - [x] Select 97 to see current order
+    - [x] Select 0 to cancel order
+
+- [x] When a client selects 
+    - [x] Select 1 the chat-bot should return a list of items from the restaurant menu
+    - [x] Select 99 the chat-bot should return order placed message
+    - [x] Select 98 the chat-bot should return all placed orders
+    - [x] Select 97 the chat-bot should return current order
+    - [x] Select 0 the chat-bot should cancel the order
+
+- 
+- [x] Validate user inputs
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+---
+
+</details>
+
+<br>
+
 ---
 ### Installation
 - Install NodeJS, mongodb
