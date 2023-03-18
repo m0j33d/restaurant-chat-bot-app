@@ -1,0 +1,11 @@
+[
+  {
+    "1": "Send 1 to Place an order.",
+    "99": "Send 99 checkout order.",
+    "98": "Send 98 to see order history.",
+    "97": "Send 97 to see current order.",
+    "0": "Send 0 to cancel order."
+  },
+  { "checkout": "Thank you, Order received!" },
+  { "deleteOrder": "Huh! Your order has been cancelled." }
+]
