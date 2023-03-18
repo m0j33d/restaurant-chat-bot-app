@@ -15,7 +15,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, "public", "chat.html"));
+  res.status(200).sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 const Menu = require("./models/menu.model");
@@ -74,7 +74,6 @@ io.on("connection", async (socket) => {
   );
   const options = JSON.parse(option);
   const session = socket.request.session;
-  console.log(session.userId);
   let userID = session.userId;
   let user;
   if (!userID) {
@@ -91,14 +90,13 @@ io.on("connection", async (socket) => {
   } else {
     user = await User.findOne({ userId: userID });
   }
-  console.log(session.userId);
   
   //   Initial Message
   socket.emit("botInitialMsg", Object.values(options[0]));
 
   // Save Chat
   socket.on("saveMsg", async (chat, isBotMsg) => {
-    const chatMsg = await Chat.create({
+   await Chat.create({
       userId: user._id,
       chatMsg: chat,
       isBotMsg,
@@ -109,7 +107,7 @@ io.on("connection", async (socket) => {
     const selectedItems = chatInput.split(",");
     let orders = menu.filter((item) => selectedItems.includes(item.dishNo));
     session.orders = orders;
-    // console.log(session.orders);
+
     const selectionPattern = /^[3-9](,[3-9])*$/;
     switch (true) {
       case chatInput === "1":
@@ -210,7 +208,7 @@ io.on("connection", async (socket) => {
       default:
         socket.emit("botMessage", {
           type: "invalidInput",
-          data: { message: "wrong input" },
+          data: { message: "This input is invalid. Try again" },
         });
         break;
     }

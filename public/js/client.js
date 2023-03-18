@@ -6,10 +6,10 @@ const inputCon = document.getElementById("input-container");
 const msgInput = document.getElementById("msg-input");
 const chatWindow = document.querySelector(".chat-window");
 let options;
+
 inputCon.addEventListener("submit", (e) => {
   e.preventDefault();
   const chat = msgInput.value.trim();
-  console.log(chat);
   if (chat) {
     displayMessage(chat, false);
     socket.emit("saveMsg", chat, false);
@@ -26,16 +26,15 @@ socket.on("connect", () => {
   displayGreetings();
 });
 
-// socket.on("botMessage", (data) => {
-//   displayMenu(data);
-// });
 
 socket.on("loadChatHistory", (userChatHistory) => {
   displayChatHistory(userChatHistory);
 });
+
 socket.on("botInitialMsg", (options) => {
   displayOptions(options);
 });
+
 socket.on("botMessage", ({ type, data }) => {
   switch (type) {
     case "menu":
@@ -59,16 +58,18 @@ socket.on("botMessage", ({ type, data }) => {
       break;
   }
 });
+
 function handlingScroll() {
   chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: "smooth" });
 }
+
 function displayMessage(message, isBotMsg) {
   
   const chatMessage = document.createElement("div");
   chatMessage.className = `chat-text ${isBotMsg ? "bot" : "chat"}-message`;
   chatMessage.innerHTML = message;
   chatHistory.insertAdjacentElement("beforeend", chatMessage);
-  // handlingScroll();
+  handlingScroll();
 }
 
 function displayChatHistory(userChatHistory) {
@@ -86,11 +87,13 @@ function displayOptions(optsArray) {
 }
 
 function displayMenu(menu) {
-  const htmlFormattedOpts = `<p><ol start=100 style="list-style-type:decimal; list-style-position:inside;">${menu
+  const htmlFormattedOpts = `<p><ol start=3 style="list-style-type:decimal; list-style-position:inside;">${menu
     .map(
       (item) => `<li>${item.name} -- #${item.price}</li>`
     )
-    .join("")}</ol></p>`;
+    .join("")}</ol></p>
+    <p class="font-bold mt-4">Note: If you want to order multiple item select them together by adding a comma then next item </p>
+    <p class="font-bold" > For example 3,4,5 </p>`;
   displayMessage(htmlFormattedOpts, true);
 }
 
@@ -102,17 +105,16 @@ function displayCurrOrder(orders) {
   const total = orders.reduce((prev, item) => prev + item.price, 0);
   const htmlFormattedOpts = `<p><ul>${orders
     .map(
-      (item) => `<li>${item.name} -- $${item.price}</li>`
+      (item) => `<li class="my-2">${item.name} -- #${item.price}</li>`
     )
-    .join("")} Total is ${total}</ul></p>`;
+    .join("")} Total is <span class="font-bold"> #${total} </span></ul></p>`;
   displayMessage(htmlFormattedOpts, true);
 }
 
 function displayOrderHistory(orders) {
-  console.log(orders);
   const htmlFormattedOpts = `<p><ul>${orders
     .map(
-      (order) => `<li>${order.orders.map((item) => item.name).join("")}</li>`
+      (order) => `<li class="my-2" >${order.orders.map((item) => `<li class="my-2">${item.name}</li>`).join("")}</li>`
     )
     .join("")}</ul></p>`;
   displayMessage(htmlFormattedOpts, true);
