@@ -1,16 +1,16 @@
 {
-  "name": "serverside",
+  "name": "cassava-garri",
   "version": "1.0.0",
   "engines": {
     "node": ">=14.20.1"
   },
-  "description": "chatbot restaurant chatbot",
+  "description": "cassava-garri restaurant chatbot",
   "main": "server.js",
   "scripts": {
     "start:dev": "nodemon server.js",
     "start": "node server.js"
   },
-  "author": "Adeola M. Adelodun",
+  "author": "Adeoye Mojeed",
   "license": "ISC",
   "dependencies": {
     "connect-mongo": "^4.6.0",

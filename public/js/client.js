@@ -1,6 +1,6 @@
 import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
 
-const socket = io("http://localhost:4000");
+const socket = io("https://cassava-garri-chatbot.onrender.com/");
 const chatHistory = document.getElementById("chat-history");
 const inputCon = document.getElementById("input-container");
 const msgInput = document.getElementById("msg-input");
